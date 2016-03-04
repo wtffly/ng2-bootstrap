@@ -17,7 +17,7 @@ export class DropdownService {
       window.document.addEventListener('click', this.closeDropdownBind);
       window.document.addEventListener('keydown', this.keybindFilterBind);
     }
-
+    this.dropdownScope = dropdownScope;
     if (this.openScope && this.openScope !== this.dropdownScope) {
       this.openScope.isOpen = false;
     }
@@ -26,10 +26,11 @@ export class DropdownService {
   }
 
   public close(dropdownScope:Dropdown) {
-    if (this.openScope !== dropdownScope) {
+    if (this.dropdownScope !== dropdownScope) {
       return;
     }
-
+    
+    this.dropdownScope = null;
     this.openScope = null;
     window.document.removeEventListener('click', this.closeDropdownBind);
     window.document.removeEventListener('keydown', this.keybindFilterBind);
