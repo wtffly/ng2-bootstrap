@@ -17,7 +17,9 @@ export class DropdownService {
       window.document.addEventListener('click', this.closeDropdownBind);
       window.document.addEventListener('keydown', this.keybindFilterBind);
     }
+    
     this.dropdownScope = dropdownScope;
+    
     if (this.openScope && this.openScope !== this.dropdownScope) {
       this.openScope.isOpen = false;
     }
